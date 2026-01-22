@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Mimi 🎆💖</title>
+<link rel="stylesheet" href="style.css">
+<style>
+body {
+  background: #0b0006;
+  color: #ffb3d9;
+  font-family: 'Courier New', monospace;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 20px;
+  overflow: hidden;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #ff8fc7;
+  text-shadow: 0 0 15px #ff2f92;
+}
+
+#fireworksArea {
+  position: relative;
+  width: 100%;
+  height: 60%;
+  overflow: hidden;
+}
+
+.firework {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: white;
+  animation: explode 1s ease-out forwards;
+}
+
+@keyframes explode {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(4); opacity: 0; }
+}
+
+button {
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 25px;
+  background-color: #fff;
+  color: #ff1493;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 20px;
+  box-shadow: 0 0 10px #ff2f92;
+}
+
+.navigation a {
+  color: #ffb3d9;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 10px 15px;
+}
+</style>
+</head>
+<body>
+<h1>Happy Birthday Mimi 💖🎆</h1>
+<button id="fireworkBtn">Launch Fireworks!</button>
+
+<div id="fireworksArea"></div>
+
+<div class="navigation">
+  <a href="page10.html">Previous</a>
+</div>
+
+<script>
+const fireworkBtn = document.getElementById('fireworkBtn');
+const fireworksArea = document.getElementById('fireworksArea');
+
+fireworkBtn.addEventListener('click', () => {
+  for(let i=0;i<80;i++){
+    const firework=document.createElement('div');
+    firework.className='firework';
+    firework.style.left=Math.random()*window.innerWidth+'px';
+    firework.style.top=Math.random()*window.innerHeight*0.6+'px';
+    firework.style.backgroundColor=`hsl(${Math.random()*360},100%,70%)`;
+    firework.style.width=firework.style.height=(Math.random()*8+4)+'px';
+    firework.style.animationDuration=(Math.random()*1+0.5)+'s';
+    fireworksArea.appendChild(firework);
+    setTimeout(()=>fireworksArea.removeChild(firework),1000);
+  }
+});
+</script>
+</body>
+</html>

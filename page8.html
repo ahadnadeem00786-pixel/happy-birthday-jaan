@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Virtual Hug 🤗💖</title>
+<link rel="stylesheet" href="style.css">
+<style>
+body {
+  background: #0b0006;
+  color: #ffb3d9;
+  font-family: 'Courier New', monospace;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 20px;
+  overflow: hidden;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #ff8fc7;
+  text-shadow: 0 0 10px #ff2f92;
+}
+
+.card {
+  background: rgba(255,255,255,0.05);
+  border-radius: 15px;
+  padding: 30px;
+  max-width: 360px;
+  box-shadow: 0 0 20px #ff2f92;
+  width: 100%;
+  text-align: center;
+  animation: fadeIn 1s ease forwards;
+}
+
+#hugArea {
+  width: 200px;
+  height: 200px;
+  font-size: 6rem;
+  cursor: pointer;
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.heart {
+  position: absolute;
+  font-size: 2rem;
+  animation: floatUp 1.5s ease-out forwards;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-200px) scale(1.5); opacity: 0; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+
+.navigation a {
+  color: #ffb3d9;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 10px 15px;
+}
+</style>
+</head>
+<body>
+  <h1>Virtual Hug for Mimi 💖</h1>
+  <div class="card">
+    <div id="hugArea">🤗</div>
+    <div>Click the hug to feel my love 💕</div>
+  </div>
+
+  <div class="navigation">
+    <a href="page7.html">Previous</a>
+    <a href="page9.html">Next</a>
+  </div>
+
+  <script>
+    const hugArea = document.getElementById('hugArea');
+
+    hugArea.addEventListener('click', () => {
+      for(let i=0;i<10;i++){
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.style.left = Math.random()*300+'px';
+        heart.style.top = Math.random()*300+'px';
+        heart.textContent = '❤️';
+        hugArea.appendChild(heart);
+        setTimeout(()=>hugArea.removeChild(heart),1500);
+      }
+    });
+  </script>
+</body>
+</html>
